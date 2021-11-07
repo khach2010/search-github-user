@@ -11,7 +11,7 @@ import FusionCharts from 'fusioncharts'
 // Include the chart type
 import Chart from 'fusioncharts/fusioncharts.charts'
 
-// Include the theme as fusion
+// Include the theme as fusionxa
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
 
 // Adding the chart and theme as dependency to the core fusioncharts

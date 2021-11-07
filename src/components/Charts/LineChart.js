@@ -23,22 +23,28 @@ ReactFC.fcRoot(FusionCharts, Chart, FusionTheme)
 
 const ChartComponent = ({ data }) => {
   const chartConfigs = {
-    type: 'pie3d', // The chart type
-    width: '100%', // Width of the chart
+    type: 'bar3d', // The chart type
+    width: '700', // Width of the chart
     height: '400', // Height of the chart
     dataFormat: 'json', // Data type
     dataSource: {
       // Chart Configuration
       chart: {
-        caption: 'Languages',
+        //Set the chart caption
+        caption: 'Countries With Most Oil Reserves [2017-18]',
+        //Set the chart subcaption
+        subCaption: 'In MMbbl = One Million barrels',
+        //Set the x-axis name
+        xAxisName: 'Country',
+        //Set the y-axis name
+        yAxisName: 'Reserves (MMbbl)',
+        numberSuffix: 'K',
+        //Set the theme for your chart
         theme: 'fusion',
-        decimals: 0, // decimals from 0 to 1
-        pieRadius: '45%',
-        // paletteColors: ['#f0db4f', '#2f91d3', '#863da5'], // build up the pallets colors that have enough colors to display the data, otherwise color will be reuse
       },
       // Chart Data
-      data, // es6 syntax
-      // data: data, es5 syntax
+      data,
+      // data: data,(receive data from parent pros)
     },
   }
   return <ReactFC {...chartConfigs} />
