@@ -39,28 +39,32 @@ const Repos = () => {
     })
     .slice(0, 5)
 
-  const chartData = [
-    {
-      label: 'Venezuela',
-      value: '90',
+  let { stars, forks } = githubRepos.reduce(
+    (total, item) => {
+      const { stargazers_count, name, forks } = item
+      total.stars[stargazers_count] = { label: name, value: forks }
+      total.forks[forks] = { label: name, value: forks }
+
+      return total
     },
     {
-      label: 'Saudi',
-      value: '50',
-    },
-    {
-      label: 'Canada',
-      value: '20',
-    },
-  ]
+      stars: {},
+      forks: {},
+    }
+  )
+  console.log(stars)
+  stars = Object.values(stars).slice(-5).reverse()
+  forks = Object.values(forks).slice(-5).reverse()
+  console.log(stars)
+
   return (
     <section className="section">
       <Wrapper className="section-center">
         {/* <ExampleChart data={chartData} /> */}
         <Pie3D data={mostUsed} />
-        <Column3D data={chartData} />
+        <Column3D data={stars} />
         <Doughnut2D data={mostPopular} />
-        <Bar3D data={chartData} />
+        <Bar3D data={forks} />
       </Wrapper>
     </section>
   )
