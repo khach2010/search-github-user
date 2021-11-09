@@ -42,11 +42,11 @@ const GithubProvider = ({ children }) => {
     )
     if (response) {
       setGithubUser(response.data)
-      setIsLoading(false)
     } else {
       toggleError(true, 'There is no user with that name')
-      setIsLoading(false)
     }
+    checkRequest()
+    setIsLoading(false)
   }
   const toggleError = (show = false, msg = '') => {
     setError({ show, msg })
@@ -65,6 +65,7 @@ const GithubProvider = ({ children }) => {
         requests,
         error,
         searchGithubUser,
+        isLoading,
       }}
     >
       {children}
