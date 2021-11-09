@@ -23,6 +23,7 @@ const GithubProvider = ({ children }) => {
           rate: { remaining },
         } = data
         setRequests(remaining)
+
         if (remaining === 0) {
           toggleError(
             true,
@@ -31,6 +32,21 @@ const GithubProvider = ({ children }) => {
         }
       })
       .catch((error) => console.log(error))
+  }
+
+  const searchGithubUser = async (user) => {
+    toggleError()
+    setIsLoading(true)
+    const response = await axios(`${rootUrl}/users/${user}`).catch((err) =>
+      console.log(err)
+    )
+    if (response) {
+      setGithubUser(response.data)
+      setIsLoading(false)
+    } else {
+      toggleError(true, 'There is no user with that name')
+      setIsLoading(false)
+    }
   }
   const toggleError = (show = false, msg = '') => {
     setError({ show, msg })
@@ -42,7 +58,14 @@ const GithubProvider = ({ children }) => {
 
   return (
     <GithubContext.Provider
-      value={{ githubUser, githubRepos, followers, requests, error }}
+      value={{
+        githubUser,
+        githubRepos,
+        followers,
+        requests,
+        error,
+        searchGithubUser,
+      }}
     >
       {children}
     </GithubContext.Provider>
