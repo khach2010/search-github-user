@@ -6,7 +6,6 @@ const Search = () => {
   const [user, setUser] = useState('')
   const { requests, error, searchGithubUser, isLoading } =
     useContext(GithubContext)
-  console.log(requests)
   const { show, msg } = error
 
   const handleSubmit = (e) => {
