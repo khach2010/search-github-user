@@ -33,8 +33,8 @@ const Navbar = () => {
 
 const Wrapper = styled.nav`
   padding: 1.5rem;
-  margin-bottom: 4rem;
-  background: var(--clr-white);
+  margin-bottom: 1rem;
+  color: var(--clr-primary-10);
   text-align: center;
   display: grid;
   grid-template-columns: auto auto 100px;
@@ -52,13 +52,19 @@ const Wrapper = styled.nav`
     object-fit: cover;
   }
   button {
-    background: transparent;
-    border: transparent;
-    font-size: 1.2rem;
+    border-radius: 5px;
+    border-color: transparent;
+    padding: 0.25rem 0.5rem;
     text-transform: capitalize;
     letter-spacing: var(--spacing);
-    color: var(--clr-grey-5);
+    background: var(--clr-red-light);
+    color: var(--clr-white);
+    transition: var(--transition);
     cursor: pointer;
+    &:hover {
+      background: var(--clr-white);
+      color: var(--clr-red-light);
+    }
   }
 `
 
